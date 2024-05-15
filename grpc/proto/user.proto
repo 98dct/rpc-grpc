@@ -1,0 +1,24 @@
+syntax = "proto3";  //指定proto的版本 proto buffer v3
+
+//生成go文件命令
+//protoc目录下执行  protoc --go-grpc_out=:. --go_out=. ./user.proto
+
+package user;   //默认包名
+
+option go_package = "./user";  //生成的go代码在项目中的导入路径
+
+
+service User{
+
+  rpc GetUser(GetUserReq) returns (GetUserResp);
+}
+
+message GetUserReq{
+  string id = 1;
+}
+
+message GetUserResp{
+  string id = 1;
+  string name = 2;
+  string phone = 3;
+}
